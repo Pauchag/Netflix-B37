@@ -1,0 +1,8 @@
+directive @auth on FIELD_DEFINITION | FIELD
+
+ type Query{
+     allUsers(is_active:Boolean): [User]
+     getOneUser(id:ID,email:String):User
+     allMovie:[Event]
+     getMovie(id:ID)[Event]
+ }
