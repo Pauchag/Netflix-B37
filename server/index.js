@@ -13,7 +13,7 @@ const typeDefs = importSchema('./server/schema.graphql');
 } */
 
 // esta se intercambia cuando esta en producción para que no vean las claves y puedan borrar tu base de datos
-/* const MONGO_URI = 'mongodb+srv://Pauchag:Pauchag.1!@cluster0-qulsw.mongodb.net/test?retryWrites=true&w=majority';
+const MONGO_URI = 'mongodb+srv://Eduardo:MarioEduardo17@cluster0-5hrxf.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
@@ -23,7 +23,7 @@ mongoose.connect(MONGO_URI, {
 const mongo = mongoose.connection;
 
 mongo.on('error', (error) => console.log(error))
-    .once('open', () => console.log('Connected to database')); */
+    .once('open', () => console.log('Connected to database'));
 
 const server = new ApolloServer({
     typeDefs,
