@@ -3,6 +3,66 @@ directive @auth on FIELD_DEFINITION | FIELD
  type Query{
      allUsers(is_active:Boolean): [User]
      getOneUser(id:ID,email:String):User
-     allMovie:[Event]
-     getMovie(id:ID)[Event]
+     Movies:[Movie]
+     getMovie(id:ID):[Movie]
+ }
+
+ type Mutation {
+     newUser(data:UserAdd!):User
+     login(password:String!,email:String!):Auth
+     updateUser(data:UserUpdate!,id:ID!):User @auth
+     deleteUser(id:ID!):Message @auth
+ }
+
+ type Movie {
+    title:String!
+    poster_path:String
+    id:Int
+    popularity:Float
+ }
+
+ type Auth {
+    token:String!
+    message:String!
+}
+ type Message {
+     code:Int
+     message:String
+ }
+#Datos para crear un usuario
+ input UserAdd{
+     first_name:String!
+     last_name:String!
+     email:String!
+     password:String!
+     birth_date:String
+     gender:GENDER 
+ }
+#Para editar datos de tu user
+ input UserUpdate {
+     first_name:String
+     last_name:String
+     email:String
+     password:String
+     birth_date:String
+     gender:GENDER 
+     is_active:Boolean
+ }
+
+#Datos para leer de un usuario
+ type User {
+     _id:ID!
+     first_name:String!
+     last_name:String!
+     birth_date:String
+     email:String!
+     password:String
+     gender:GENDER #en mayusculas por se un enum
+     is_active:Boolean
+ } 
+
+ enum GENDER {
+     M
+     F
+     O
  }
